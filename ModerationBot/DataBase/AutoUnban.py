@@ -5,6 +5,7 @@ import asyncpg
 
 from .AsyncObject import Aobject
 
+
 class AutoUnban(Aobject):
     async def __init__(self, conn, bot):
         with open("./configs/configDB.json") as f:

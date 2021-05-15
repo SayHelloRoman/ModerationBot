@@ -1,6 +1,5 @@
-from asyncpg.connection import Connection
-
 from .AsyncObject import Aobject
+
 
 class Guild(Aobject):
     async def __init__(self, conn, guild):
