@@ -56,7 +56,7 @@ class User(Aobject):
         await self.user.remove_roles(role)
     
     async def ban(self, time_mute):
-        if not time_mute is None:
+        if not time_mute:
             await self.conn.execute(
                 "UPDATE users SET ban = $1 WHERE user_id = $2 and guild_id = $3",
                 int(time.time()) + time_mute, self.user.id, self.guild[0]
