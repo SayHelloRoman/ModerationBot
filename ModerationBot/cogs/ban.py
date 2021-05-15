@@ -27,7 +27,6 @@ class Slash(commands.Cog):
     @tasks.loop(seconds=120.0)
     async def auto_unban(self):
         await asyncio.sleep(30)
-        print('unban!')
         await self.bot.AutoUnban(self.bot)
 
 def setup(bot):
