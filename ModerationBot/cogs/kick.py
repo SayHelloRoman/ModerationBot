@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
-
 from discord_slash import cog_ext, SlashContext
+
 
 class Slash(commands.Cog):
     def __init__(self, bot):

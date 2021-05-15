@@ -1,11 +1,10 @@
-import discord
-from discord.ext import commands, tasks
-
+import asyncio
 from datetime import datetime
 
+import discord
+from discord.ext import commands, tasks
 from discord_slash import cog_ext, SlashContext
 
-import asyncio
 
 class Slash(commands.Cog):
     def __init__(self, bot):
@@ -27,7 +26,6 @@ class Slash(commands.Cog):
     @tasks.loop(seconds=120.0)
     async def auto_unban(self):
         await asyncio.sleep(30)
-        print('unban!')
         await self.bot.AutoUnban(self.bot)
 
 def setup(bot):

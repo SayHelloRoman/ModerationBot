@@ -1,7 +1,9 @@
-from .AsyncObject import Aobject
-import asyncpg
 import time
 import json
+
+import asyncpg
+
+from .AsyncObject import Aobject
 
 class AutoUnban(Aobject):
     async def __init__(self, conn, bot):

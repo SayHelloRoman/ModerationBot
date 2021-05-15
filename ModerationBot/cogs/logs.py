@@ -1,9 +1,9 @@
+import logging
+
 from discord import channel
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 import discord
-
-import logging
 
 
 class Slash(commands.Cog):

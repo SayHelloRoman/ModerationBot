@@ -1,6 +1,7 @@
-import asyncio
-import asyncpg
 import json
+import asyncio
+
+import asyncpg
 
 
 async def setting():

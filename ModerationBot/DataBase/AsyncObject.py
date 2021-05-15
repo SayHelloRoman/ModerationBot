@@ -1,6 +1,7 @@
+import json
+
 import asyncpg
 
-import json
 
 class Aobject:
     pool = None

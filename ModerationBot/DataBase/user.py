@@ -1,6 +1,7 @@
+import time
+
 from .AsyncObject import Aobject
 
-import time
 
 class User(Aobject):
     async def __init__(self, conn, user, guild):
