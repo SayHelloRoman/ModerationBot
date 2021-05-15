@@ -5,6 +5,7 @@ from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 import discord
 
+from DataBase.guild import Guild
 
 class Slash(commands.Cog):
     def __init__(self, bot):
@@ -13,7 +14,7 @@ class Slash(commands.Cog):
     
     @commands.Cog.listener()
     async def on_slash_command(self, ctx):
-        guild = await self.bot.Guild(ctx.guild)
+        guild = await Guild(ctx.guild)
         channel = ctx.guild.get_channel(await guild.get_log_channel())
 
         if not channel is None:
@@ -26,7 +27,7 @@ class Slash(commands.Cog):
     
     @cog_ext.cog_slash(name="set_log_channel", guild_ids = [813735804030681199])
     async def set_log_channel(self, ctx: SlashContext, channel: discord.channel.TextChannel):
-        guild = await self.bot.Guild(ctx.guild)
+        guild = await Guild(ctx.guild)
         await guild.set_log_channel(channel)
         await ctx.send('Success!')
     

@@ -5,6 +5,8 @@ import discord
 from discord.ext import commands, tasks
 from discord_slash import cog_ext, SlashContext
 
+from DataBase.user import User
+from DataBase.AutoUnban import AutoUnban
 
 class Slash(commands.Cog):
     def __init__(self, bot):
@@ -14,7 +16,7 @@ class Slash(commands.Cog):
     @cog_ext.cog_slash(name="ban", guild_ids = [813735804030681199])
     async def ban(self, ctx: SlashContext, user: discord.Member, days: int = 0, hours: int = 0, minutes: int = 0):
         time = days * 86400 + hours * 3600 + minutes * 60
-        user = await self.bot.User(user, ctx.guild)
+        user = await User(user, ctx.guild)
 
         if not time:
             time = None
@@ -26,7 +28,7 @@ class Slash(commands.Cog):
     @tasks.loop(seconds=120.0)
     async def auto_unban(self):
         await asyncio.sleep(30)
-        await self.bot.AutoUnban(self.bot)
+        await AutoUnban(self.bot)
 
 def setup(bot):
     bot.add_cog(Slash(bot))
