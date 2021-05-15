@@ -13,6 +13,5 @@ class Slash(commands.Cog):
         await ctx.send("Success!")
         
 
-
 def setup(bot):
     bot.add_cog(Slash(bot))
