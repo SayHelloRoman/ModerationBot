@@ -46,7 +46,7 @@ class Slash(commands.Cog):
     async def set_mute_role(self, ctx: SlashContext, role: discord.Role):
         guild = await self.bot.Guild(ctx.guild)
         await guild.set_mute_role(role)
-        await ctx.send('ok')
+        await ctx.send('Unmute')
         
     @tasks.loop(seconds=120.0)
     async def auto_unmute(self):
