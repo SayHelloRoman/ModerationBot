@@ -9,9 +9,11 @@ from discord import Intents
 bot = commands.Bot(command_prefix="!", intents=Intents.all())
 slash = SlashCommand(bot, override_type=True, sync_commands=True)
 
+
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py") and filename != "__init__.py":
         bot.load_extension(f"cogs.{filename[:-3]}")
+
 
 with open("configs/configBot.json") as f:
     bot.run(json.load(f)["token"])

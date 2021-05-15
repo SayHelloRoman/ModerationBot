@@ -17,12 +17,9 @@ class Slash(commands.Cog):
     
     @cog_ext.cog_slash(name="mute", guild_ids = [813735804030681199])
     async def mute(self, ctx: SlashContext, user: discord.Member, days: int = 0, hours: int = 0, minutes: int = 0):
-        time = days * 86400 + hours * 3600 + minutes * 60
+        time = (days * 86400 + hours * 3600 + minutes * 60) or None
         user = await User(user, ctx.guild)
         text = 'User mute'
-
-        if not time:
-            time = None
         
         try:
             await user.mute(time)
