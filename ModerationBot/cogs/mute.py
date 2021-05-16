@@ -16,6 +16,7 @@ class Slash(commands.Cog):
         self.auto_unmute.start()
     
     @cog_ext.cog_slash(name="mute", guild_ids = [813735804030681199])
+    @commands.has_permissions(administrator=True)
     async def mute(self, ctx: SlashContext, user: discord.Member, days: int = 0, hours: int = 0, minutes: int = 0):
         time = (days * 86400 + hours * 3600 + minutes * 60) or None
         user = await User(user, ctx.guild)
@@ -30,6 +31,7 @@ class Slash(commands.Cog):
         await ctx.send(text)
     
     @cog_ext.cog_slash(name="unmute", guild_ids = [813735804030681199])
+    @commands.has_permissions(administrator=True)
     async def unmute(self, ctx: SlashContext, user: discord.Member):
         user = await User(user, ctx.guild)
         text = 'User unmute'
@@ -43,6 +45,7 @@ class Slash(commands.Cog):
         await ctx.send(text)
 
     @cog_ext.cog_slash(name="set_mute_role", guild_ids = [813735804030681199])
+    @commands.has_permissions(administrator=True)
     async def set_mute_role(self, ctx: SlashContext, role: discord.Role):
         guild = await Guild(ctx.guild)
         await guild.set_mute_role(role)

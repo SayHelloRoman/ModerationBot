@@ -7,6 +7,7 @@ import discord
 
 from DataBase.guild import Guild
 
+
 class Slash(commands.Cog):
     def __init__(self, bot):
         logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
@@ -26,6 +27,7 @@ class Slash(commands.Cog):
             await channel.send(embed=embed)
     
     @cog_ext.cog_slash(name="set_log_channel", guild_ids = [813735804030681199])
+    @commands.has_permissions(administrator=True)
     async def set_log_channel(self, ctx: SlashContext, channel: discord.channel.TextChannel):
         guild = await Guild(ctx.guild)
         await guild.set_log_channel(channel)
