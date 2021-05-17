@@ -7,7 +7,7 @@ class Slash(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @cog_ext.cog_slash(name="kick", guild_ids = [813735804030681199])
+    @cog_ext.cog_slash(name="kick")
     @commands.has_permissions(administrator=True)
     async def kick(self, ctx: SlashContext, user: discord.User):
         await user.kick()
