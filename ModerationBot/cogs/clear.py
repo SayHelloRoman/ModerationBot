@@ -7,7 +7,7 @@ class Slash(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @cog_ext.cog_slash(name="clear", guild_ids = [813735804030681199])
+    @cog_ext.cog_slash(name="clear")
     @commands.has_permissions(administrator=True)
     async def clear(self, ctx: SlashContext, amount: int):
         await ctx.channel.purge(limit=amount)
