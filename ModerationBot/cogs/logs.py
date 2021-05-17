@@ -26,7 +26,7 @@ class Slash(commands.Cog):
             logging.info(f"\nuser: {author}\ncommand: {func}")
             await channel.send(embed=embed)
     
-    @cog_ext.cog_slash(name="set_log_channel", guild_ids = [813735804030681199])
+    @cog_ext.cog_slash(name="set_log_channel")
     @commands.has_permissions(administrator=True)
     async def set_log_channel(self, ctx: SlashContext, channel: discord.channel.TextChannel):
         guild = await Guild(ctx.guild)
