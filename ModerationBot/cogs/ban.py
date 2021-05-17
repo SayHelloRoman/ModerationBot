@@ -14,7 +14,7 @@ class Slash(commands.Cog):
         self.bot = bot
         self.auto_unban.start()
     
-    @cog_ext.cog_slash(name="ban", guild_ids = [813735804030681199])
+    @cog_ext.cog_slash(name="ban")
     @commands.has_permissions(administrator=True)
     async def ban(self, ctx: SlashContext, user: discord.Member, days: int = 0, hours: int = 0, minutes: int = 0):
         time = (days * 86400 + hours * 3600 + minutes * 60) or None
