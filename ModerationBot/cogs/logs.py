@@ -6,12 +6,14 @@ from discord_slash import cog_ext, SlashContext
 import discord
 
 from DataBase.guild import Guild
+from log import get_logger
 
 
 class Slash(commands.Cog):
     def __init__(self, bot):
-        logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
         self.bot = bot
+        self.info_log = get_logger("Я всё вижу блять", "INFO")
+        self.error_log = get_logger("Ярик нам пизда", "ERROR")
     
     @commands.Cog.listener()
     async def on_slash_command(self, ctx):
@@ -21,9 +23,9 @@ class Slash(commands.Cog):
         if not channel is None:
             author = ctx.author.name
             func = ctx.name
-            embed = discord.Embed(title=f"\nuser: {author}\ncommand: {func}")
+            embed = discord.Embed(title=f"nuser: {author}, command: {func}")
             
-            logging.info(f"\nuser: {author}\ncommand: {func}")
+            self.info_log.info(f"user: {author}, command: {func}")
             await channel.send(embed=embed)
     
     @cog_ext.cog_slash(name="set_log_channel")
@@ -33,6 +35,9 @@ class Slash(commands.Cog):
         await guild.set_log_channel(channel)
         await ctx.send('Success!')
     
+    @commands.Cog.listener()
+    async def on_slash_command_error(self, ctx, ex):
+        self.error_log.error(f"Тебя давно не ебали {ex}?")
     
 
 def setup(bot):
